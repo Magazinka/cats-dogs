@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from "@reduxjs/toolkit"
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getDog = createAsyncThunk("axiosDogs", async () => {
@@ -16,8 +16,8 @@ export const getDog = createAsyncThunk("axiosDogs", async () => {
 	}
 });
 export interface Dog {
-	message: string,
-	status: string,
+	message: string;
+	status: string;
 }
 
 interface initState {
@@ -31,23 +31,24 @@ const initialState: initState = {
 };
 
 export const dogSlice = createSlice({
-	name: 'dog',
+	name: "dog",
 	initialState: initialState,
-	reducers:{},
+	reducers: {},
 	extraReducers: builder => {
-				builder.addCase(getDog.pending, state => {
-					state.isDogLoading = true;
-				});
-	
-				builder.addCase(getDog.fulfilled, (state, action: PayloadAction<Dog[]>) => {
-					state.dogs = action.payload;
-					state.isDogLoading = false;
-				});
-	
-				builder.addCase(getDog.rejected, state => {
-					state.isDogLoading = false;
-				});
-	}
-})
+		builder.addCase(getDog.pending, state => {
+			state.isDogLoading = true;
+		});
 
-export default dogSlice.reducer
+		builder.addCase(getDog.fulfilled, (state, action: PayloadAction<Dog>) => {
+			state.dogs = [action.payload]; 
+			state.isDogLoading = false;
+			console.log("Fetched Dog:", action.payload);
+		});
+
+		builder.addCase(getDog.rejected, state => {
+			state.isDogLoading = false;
+		});
+	},
+});
+
+export default dogSlice.reducer;
