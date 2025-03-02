@@ -1,0 +1,20 @@
+/* .nav,
+.nav-tabs,
+.nav-justified {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: rgb(255, 237, 215);
+	font-size: 40px;
+	font-family: 'Kablammo', monospace;
+} */
+
+/* @font-face {
+    font-family: 'Kablammo';
+    src: local('Kablammo'), url('../../../Fonts/Kablammo/Kablammo-Regular-VariableFont_MORF.ttf') format('truetype');
+    font-weight: 400;
+    font-variation-settings: "MORF" 30;
+} */
